@@ -1,0 +1,39 @@
+STC\EventBundle\Entity\EventCategory:
+    type: entity
+    table: stc_event_category
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        description:
+            type: text
+            nullable: true
+        slug:
+            type: string
+            length: 128
+            gedmo:
+                slug:
+                    separator: _
+                    fields:
+                        - title
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+    oneToMany:
+        events:
+          targetEntity: STC\EventBundle\Entity\Event
+          mappedBy: category
+    lifecycleCallbacks: { }

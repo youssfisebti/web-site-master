@@ -1,0 +1,47 @@
+STC\SiteBundle\Entity\Banner:
+    type: entity
+    repositoryClass:  STC\SiteBundle\Repository\BannerRepository
+    table: stc_banners
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            nullable: true
+        client:
+            type: string
+        start_date:
+            type: date
+        duration:
+            type: integer
+        enabled:
+            type: boolean
+        url:
+            type: string
+            nullable: true
+        status: # 0 - To validate,1 - Online, 2 - Offline
+            type: integer
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+    oneToOne:
+        media:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+            cascade: ["all"]
+            joinColumn:
+                name: media_id
+                eferencedColumnName: id
+            fetch: EAGER
+

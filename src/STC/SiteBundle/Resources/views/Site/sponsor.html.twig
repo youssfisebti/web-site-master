@@ -1,0 +1,12 @@
+<article class="span6">
+    <h3>Supporter par</h3>
+    <ul class="list-photo">
+        {% for key,entity in entities %}
+            <a href="{{ entity.url }}" {% if key % 3 %}class="magnifier" {% endif %}>
+                <div class="">
+                    {% media entity.logo, 'show' with {'alt': entity.name,'title': entity.name } %}
+                </div>
+            </a>
+        {% endfor %}
+    </ul>
+</article>

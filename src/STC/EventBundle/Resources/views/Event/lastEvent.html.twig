@@ -1,0 +1,25 @@
+<div class="row-1">
+    <div class="container">
+        <div class="row">
+            <ul class="thumbnails thumbnails-1">
+                {% for entity in entities %}
+                    <li class="span3">
+                        <div class="thumbnail thumbnail-1">
+                            <h3>{{ entity.title }}</h3>
+
+                            <div class="">
+                                {% media entity.image, 'show' with {'alt': entity.title,'title': entity.title } %}
+                            </div>
+                            <section>
+                                <p>{{ entity.description }}</p>
+                                <a href="{{ path('event_show', {'slug': entity.slug }) }}" class="btn btn-1">
+                                    En savoir plus
+                                </a>
+                            </section>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
